@@ -1,0 +1,36 @@
+swagger: '2.0'
+info:
+  description: This API retrieves the statistics of the docker containers running in Toto
+  title: Docker stats
+schemes:
+  - https
+paths:
+  /stats:
+    get:
+      summary: Get the statistics for each container
+      description: 'Retrieves the statistics for all containers deployed. This also includes containers that are not microservices.'
+      operationId: GET Docker Stats
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Successful operation
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ContainerStats'
+        '400':
+          description: Invalid status value
+
+definitions:
+  ContainerStats:
+    type: object
+    properties:
+      containerId:
+        type: string
+      type:
+        type: string
+      name:
+        type: string
+      memory:
+        type: number

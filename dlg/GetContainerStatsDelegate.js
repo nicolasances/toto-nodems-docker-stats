@@ -1,11 +1,15 @@
 var Docker = require('dockerode');
-var docker = new Docker({socketPath: '/var/run/docker.sock'});
+var docker = new Docker();
 
 exports.getContainerStats = function(containerId) {
 
   return new Promise(function(success, failure) {
 
+    console.log("Recieved request to get container stats for " + containerId);
+
     var container = docker.getContainer(containerId);
+
+    console.log(containerId);
 
     container.stats(function(err, data) {
 

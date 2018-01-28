@@ -7,8 +7,6 @@ exports.getContainers = function() {
 
     docker.listContainers(function(error, dockerContainers) {
 
-      console.log(dockerContainers);
-
       if (dockerContainers == null) success([]);
 
       var containers = [];
@@ -17,6 +15,8 @@ exports.getContainers = function() {
 
         containers.push({id: dockerContainers[i].Id});
       }
+
+      console.log(containers);
 
       success(containers);
 

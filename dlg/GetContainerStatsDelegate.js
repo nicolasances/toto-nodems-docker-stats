@@ -10,7 +10,7 @@ exports.getContainerStats = function(containerId) {
     container.stats({stream: false}, function(err, data) {
 
       success({
-        containerId: containerId,
+        containerId: containerId.id,
         type: getType([data.name]),
         name: data.name,
         memory: data.memory_stats.usage

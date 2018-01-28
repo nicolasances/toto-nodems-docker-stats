@@ -1,20 +1,15 @@
-var http = require('request');
+var Docker = require('dockerode');
+var docker = new Docker({socketPath: '/var/run/docker.sock'});
 
 exports.getContainerStats = function(containerId) {
 
   return new Promise(function(success, failure) {
 
-    var data = {
-      url : "http://unix:/var/run/docker.sock:http:/v1.24/containers/" + containerId + "/stats",
-      headers : {
-        'User-Agent' : 'node.js',
-        'Accept' : 'application/json'
-      }
-    };
+    var container = docker.getContainer(containerId);
 
-    http.get(data, function(error, response, body) {
+    container.stats(function(err, data) {
 
-      var data = JSON.parse(body);
+      console.log(data);
 
       success({
         containerId: containerId,

@@ -1,11 +1,13 @@
 var Docker = require('dockerode');
-var docker = new Docker({socketPath: '/var/run/docker.sock'});
+var docker = new Docker();
 
 exports.getContainers = function() {
 
   return new Promise(function(success, failure) {
 
     docker.listContainers(function(error, dockerContainers) {
+
+      console.log(dockerContainers);
 
       if (dockerContainers == null) success([]);
 

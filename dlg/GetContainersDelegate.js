@@ -11,7 +11,7 @@ exports.getContainers = function() {
 
       var containers = [];
 
-      for (var i = 0; i < dockerContainers.length; i++) {
+      for (var i = 0; i < 1; i++) {
 
         containers.push({id: dockerContainers[i].Id});
       }

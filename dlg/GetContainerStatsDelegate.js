@@ -9,6 +9,8 @@ exports.getContainerStats = function(containerId) {
 
     container.stats(function(err, data) {
 
+      console.log(data);
+
       success({});
 
       // success({

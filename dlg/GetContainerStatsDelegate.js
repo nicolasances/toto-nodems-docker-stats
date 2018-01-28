@@ -17,9 +17,9 @@ exports.getContainerStats = function(containerId) {
 
       success({
         containerId: containerId,
-        type: getType(data.names),
-        name: data.names[0],
-        memory: data.memory_status.usage
+        // type: getType(data.names),
+        // name: data.names[0],
+        // memory: data.memory_status.usage
       });
 
     });

@@ -9,16 +9,12 @@ exports.getContainerStats = function(containerId) {
 
     container.stats({stream: false}, function(err, data) {
 
-      console.log(data);
-
-      success({});
-
-      // success({
-      //   containerId: containerId,
-      //   type: getType(data.names),
-      //   name: data.names[0],
-      //   memory: data.memory_status.usage
-      // });
+      success({
+        containerId: containerId,
+        type: getType([data.name]),
+        name: data.name,
+        memory: data.memory_stats.usage
+      });
 
     });
 

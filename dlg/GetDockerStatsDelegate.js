@@ -16,11 +16,12 @@ exports.getDockerStats = function() {
 
         getContainerStatsDlg.getContainerStats(containers[i]).then(function(dockerStats) {
 
-          stats.push(dockerStats);
-
-          if (stats.length == containers.length) {
-            success({containers: stats});
-          }
+          // stats.push(dockerStats);
+          //
+          // if (stats.length == containers.length) {
+          //   success({containers: stats});
+          // }
+          success(dockerStats);
         });
       }
     });

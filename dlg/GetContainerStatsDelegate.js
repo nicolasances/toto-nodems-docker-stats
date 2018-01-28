@@ -7,7 +7,7 @@ exports.getContainerStats = function(containerId) {
 
     var container = docker.getContainer(containerId.id);
 
-    container.stats(function(err, data) {
+    container.stats({stream: false}, function(err, data) {
 
       console.log(data);
 

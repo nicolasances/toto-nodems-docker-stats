@@ -16,8 +16,6 @@ exports.getContainers = function() {
         containers.push({id: dockerContainers[i].Id});
       }
 
-      console.log(containers);
-
       success(containers);
 
     });

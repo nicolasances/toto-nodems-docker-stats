@@ -9,6 +9,8 @@ exports.getContainerStats = function(containerId) {
 
     container.stats({stream: false}, function(err, data) {
 
+      console.log(data);
+
       success({
         containerId: containerId.id,
         type: getType([data.name]),

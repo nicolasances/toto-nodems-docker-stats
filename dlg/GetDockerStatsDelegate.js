@@ -14,9 +14,9 @@ exports.getDockerStats = function() {
 
       for (var i = 0; i < containers.length; i++) {
 
-        getContainerStatsDlg.getContainerStats(containers[i]).then(function(stats) {
+        getContainerStatsDlg.getContainerStats(containers[i]).then(function(dockerStats) {
 
-          stats.push(stats);
+          stats.push(dockerStats);
 
           if (stats.length == containers.length) {
             success({containers: stats});

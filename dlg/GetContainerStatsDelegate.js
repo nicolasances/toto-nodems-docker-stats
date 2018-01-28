@@ -5,22 +5,18 @@ exports.getContainerStats = function(containerId) {
 
   return new Promise(function(success, failure) {
 
-    console.log("Recieved request to get container stats for " + containerId);
-
     var container = docker.getContainer(containerId.id);
-
-    console.log(containerId);
 
     container.stats(function(err, data) {
 
-      console.log(data);
+      success(data);
 
-      success({
-        containerId: containerId,
-        // type: getType(data.names),
-        // name: data.names[0],
-        // memory: data.memory_status.usage
-      });
+      // success({
+      //   containerId: containerId,
+      //   type: getType(data.names),
+      //   name: data.names[0],
+      //   memory: data.memory_status.usage
+      // });
 
     });
 

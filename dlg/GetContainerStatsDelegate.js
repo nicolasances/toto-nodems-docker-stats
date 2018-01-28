@@ -7,7 +7,7 @@ exports.getContainerStats = function(containerId) {
 
     console.log("Recieved request to get container stats for " + containerId);
 
-    var container = docker.getContainer(containerId);
+    var container = docker.getContainer(containerId.id);
 
     console.log(containerId);
 

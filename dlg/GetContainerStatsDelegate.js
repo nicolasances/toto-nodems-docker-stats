@@ -15,7 +15,13 @@ exports.getContainerStats = function(containerId) {
         containerId: containerId.id,
         type: getType([data.name]),
         name: data.name.substring(1),
-        memory: data.memory_stats.usage
+        memory: data.memory_stats.usage,
+        memoryLimit: data.memory_stats.limit,
+        cpu: {
+          usage: data.cpu_stats.cpu_usage.total_usage,
+          system: data.cpu_stats.system_cpu_usage,
+          perc: 100 * (data.cpu_stats.cpu_usage.total_usage / data.cpu_stats.system_cpu_usage)
+        }
       });
 
     });

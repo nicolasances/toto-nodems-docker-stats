@@ -15,7 +15,7 @@ app.use(function(req, res, next) {
 app.use(bodyParser.json());
 app.use(express.static('/app'));
 
-app.get('/', function(req, res) {res.send({api: 'api-discovery', status: 'running'});});
+app.get('/', function(req, res) {res.send({api: 'docker-stats', status: 'running'});});
 app.get('/stats', function(req, res) {getDockerStats.getDockerStats().then(function(result) {res.send(result);});});
 
 app.listen(8080, function() {

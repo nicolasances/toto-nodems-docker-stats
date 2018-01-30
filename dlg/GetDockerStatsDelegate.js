@@ -44,8 +44,8 @@ exports.getDockerStats = function() {
       }
 
       return {
-        totalMemory : totalMemory / 1000000,
-        totalMemoryConsumption : totalMemoryConsumption / 1000000
+        totalMemory : totalMemory / 1000000000,
+        totalMemoryConsumption : totalMemoryConsumption / 1000000000
       };
     }
   });

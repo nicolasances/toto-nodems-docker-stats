@@ -46,6 +46,8 @@ exports.getDockerStats = function() {
 
         var stats = getStatsForType(type, types);
 
+        console.log(stats);
+
         if (stats == null) {
           types.push({type: type, memoryConsumption: 0});
 
@@ -53,6 +55,8 @@ exports.getDockerStats = function() {
         }
 
         stats.memoryConsumption += containers[i].memory;
+
+        console.log(types);
       }
 
       return types;

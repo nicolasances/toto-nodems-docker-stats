@@ -61,7 +61,7 @@ exports.getDockerStats = function() {
     /**
      * Returns the statistics of the specified type, if any (null otherwise)
      */
-    function getStatsForType = function(type, types) {
+    getStatsForType = function(type, types) {
 
       if (types == null || types.length == 0) return null;
 

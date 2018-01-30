@@ -19,12 +19,35 @@ exports.getDockerStats = function() {
           stats.push(dockerStats);
 
           if (stats.length == containers.length) {
-            success({containers: stats});
+
+            success({overallStats: getOverallStats(stats), containers: stats});
           }
 
         });
       }
     });
   });
+
+  /**
+   * Calculates the overall stats, like total memory, total memory consumption, etc..
+   */
+  var getOverallStats = function(containers) {
+
+    if (containers == null) return {};
+
+    var totalMemory = 0;
+    var totalMemoryConsumption = 0;
+
+    for (var i = 0; i < containers.length; i++) {
+
+      totalMemory = containers[i].memoryLimit;
+      totalMemoryConsumption += containers[i].memory;
+    }
+
+    return {
+      totalMemory : totalMemory / 1000000,
+      totalMemoryConsumption : totalMemoryConsumption / 1000000
+    };
+  }
 
 }

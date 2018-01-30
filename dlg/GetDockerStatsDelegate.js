@@ -52,7 +52,7 @@ exports.getDockerStats = function() {
           stats = getStatsForType(type, types);
         }
 
-        stats.memoryConsumption += containers[i].memory;
+        stats.memoryConsumption += containers[i].memory / 1000000000;
 
       }
 

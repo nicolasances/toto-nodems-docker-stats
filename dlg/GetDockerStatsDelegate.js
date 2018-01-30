@@ -26,28 +26,28 @@ exports.getDockerStats = function() {
         });
       }
     });
-  });
 
-  /**
-   * Calculates the overall stats, like total memory, total memory consumption, etc..
-   */
-  var getOverallStats = function(containers) {
+    /**
+    * Calculates the overall stats, like total memory, total memory consumption, etc..
+    */
+    var getOverallStats = function(containers) {
 
-    if (containers == null) return {};
+      if (containers == null) return {};
 
-    var totalMemory = 0;
-    var totalMemoryConsumption = 0;
+      var totalMemory = 0;
+      var totalMemoryConsumption = 0;
 
-    for (var i = 0; i < containers.length; i++) {
+      for (var i = 0; i < containers.length; i++) {
 
-      totalMemory = containers[i].memoryLimit;
-      totalMemoryConsumption += containers[i].memory;
+        totalMemory = containers[i].memoryLimit;
+        totalMemoryConsumption += containers[i].memory;
+      }
+
+      return {
+        totalMemory : totalMemory / 1000000,
+        totalMemoryConsumption : totalMemoryConsumption / 1000000
+      };
     }
-
-    return {
-      totalMemory : totalMemory / 1000000,
-      totalMemoryConsumption : totalMemoryConsumption / 1000000
-    };
-  }
+  });
 
 }

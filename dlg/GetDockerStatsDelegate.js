@@ -40,15 +40,11 @@ exports.getDockerStats = function() {
 
         var containerName = containers[i].name;
 
-        console.log(containerName);
-
         var type = 'Utility';
-        if (containerName.substring('toto-ms-') == 0) type = 'Java';
-        if (containerName.substring('toto-nodems-') == 0) type = 'NodeJS';
+        if (containerName.indexOf('toto-ms-') == 0) type = 'Java';
+        if (containerName.indexOf('toto-nodems-') == 0) type = 'NodeJS';
 
         var stats = getStatsForType(type, types);
-
-        console.log(stats);
 
         if (stats == null) {
           types.push({type: type, memoryConsumption: 0});
@@ -58,7 +54,6 @@ exports.getDockerStats = function() {
 
         stats.memoryConsumption += containers[i].memory;
 
-        console.log(types);
       }
 
       return types;

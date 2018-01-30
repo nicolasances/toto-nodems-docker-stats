@@ -20,7 +20,7 @@ exports.getDockerStats = function() {
 
           if (stats.length == containers.length) {
 
-            success({overallStats: getOverallStats(stats), containers: stats, statsPerType: getStatsPerType(stats));
+            success({overallStats: getOverallStats(stats), containers: stats, statsPerType: getStatsPerType(stats)});
           }
 
         });

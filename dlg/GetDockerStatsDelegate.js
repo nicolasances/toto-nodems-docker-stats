@@ -20,12 +20,58 @@ exports.getDockerStats = function() {
 
           if (stats.length == containers.length) {
 
-            success({overallStats: getOverallStats(stats), containers: stats});
+            success({overallStats: getOverallStats(stats), containers: stats, statsPerType: getStatsPerType(stats));
           }
 
         });
       }
     });
+
+    /**
+     * Retrieves the statistics grouped by container type (Java MS, NodeJS MS, Other...)
+     */
+    var getStatsPerType = function(containers) {
+
+      if (containers == null) return {};
+
+      var types = [];
+
+      for (var i = 0; i < containers.length; i++) {
+
+        var containerName = containers[i].name;
+
+        var type = 'Utility';
+        if (containerName.substring('toto-ms-') == 0) type = 'Java';
+        if (containerName.substring('toto-nodems-') == 0) type = 'NodeJS';
+
+        var stats = getStatsForType(type, types);
+
+        if (stats == null) {
+          types.push({type: type, memoryConsumption: 0});
+
+          stats = getStatsForType(type, types);
+        }
+
+        stats.memoryConsumption += containers[i].memory;
+      }
+
+      return types;
+    }
+
+    /**
+     * Returns the statistics of the specified type, if any (null otherwise)
+     */
+    function getStatsForType = function(type, types) {
+
+      if (types == null || types.length == 0) return null;
+
+      for (var i = 0; i < types.length; i++) {
+
+        if (types[i].type == type) return types[i];
+      }
+
+      return null;
+    }
 
     /**
     * Calculates the overall stats, like total memory, total memory consumption, etc..

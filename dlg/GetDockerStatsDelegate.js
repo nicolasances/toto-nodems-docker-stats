@@ -40,6 +40,8 @@ exports.getDockerStats = function() {
 
         var containerName = containers[i].name;
 
+        console.log(containerName);
+
         var type = 'Utility';
         if (containerName.substring('toto-ms-') == 0) type = 'Java';
         if (containerName.substring('toto-nodems-') == 0) type = 'NodeJS';

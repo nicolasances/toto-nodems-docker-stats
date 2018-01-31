@@ -56,6 +56,11 @@ exports.getDockerStats = function() {
 
       }
 
+      // Sort types
+      types.sort(function(a, b) {
+        return (a.type > b.type) ? 1 : ((b.type > a.type) ? : -1 : 0);
+      });
+
       return types;
     }
 

@@ -5,7 +5,7 @@ var logger = require('toto-apimon-events')
 
 var getDockerStats = require('./dlg/GetDockerStatsDelegate');
 
-var apiName = 'docker-stats';
+var apiName = 'server-settings';
 
 var app = express();
 

@@ -2,7 +2,7 @@
 var getContainerStatsDlg = require('./GetContainerStatsDelegate');
 var getContainersDlg = require('./GetContainersDelegate');
 
-exports.getDockerStats = function() {
+exports.do = function() {
 
   return new Promise(function(success, failure) {
 

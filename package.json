@@ -9,11 +9,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.18.2",
     "dockerode": "^2.5.3",
-    "express": "^4.16.2",
     "promise": "^8.0.1",
-    "request": "^2.83.0",
-    "toto-apimon-events": "^1.0.1"
+    "toto-api-controller": "^4.7.2"
   }
 }
